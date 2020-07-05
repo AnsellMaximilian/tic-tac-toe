@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Bangers', cursive;
+    background-color: gray;
+    text-align: center;
+
+}
+
+/* GAME BOARD */
+#game-board {
+    background-color: rgb(102, 100, 100);
+    width: 35vw;
+    height: 35vw;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: 5px solid black;
+}
+
+    /* GAMEBOARD GRIDS */
+.grid {
+    width: 33.333333%;
+    box-sizing: border-box;
+    border: 5px solid black;
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid > span {
+    display: block;
+}
