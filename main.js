@@ -9,13 +9,15 @@ const gameBoard = (function(){
         grids.forEach(function(grid, index){
             var gridDiv = document.createElement("div");
             gridDiv.classList.add("grid");
+            gridDiv.textContent = grid;
 
-            var gridDivSpan = document.createElement("span");
-            gridDivSpan.textContent = grid;
-            gridDiv.appendChild(gridDivSpan);
-
+            gridDiv.addEventListener("click", placeChoice(index) );
             gameBoard.appendChild(gridDiv);
         });
+    }
+
+    const placeChoice = (e) => {
+        console.log(this)
     }
 
     return {
