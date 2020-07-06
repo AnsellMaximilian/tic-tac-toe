@@ -50,7 +50,7 @@ body {
 }
 
 /* WINNER DISPLAY */
-#winner-display {
+#game-over-display {
     display: none;
     position: absolute;
     top: 0;
@@ -58,7 +58,7 @@ body {
     height: 100%;
 }
 
-#winner-display div {
+#game-over-display div {
 
     width: 50%;
     height: 50%;
@@ -67,11 +67,11 @@ body {
     margin: 11.7% auto;
 }
 
-#winner-display div h1 {
+#game-over-display div h1 {
     font-size: 3rem;
 }
 
-#winner-display div button {
+#game-over-display div button {
     display: block;
     margin: 0 auto;
     font-family: 'Bangers', cursive;
@@ -84,10 +84,10 @@ body {
     font-size: 1.5rem;
 }
 
-#winner-display div button:hover {
+#game-over-display div button:hover {
     background-color: rgb(0, 0, 226);
 }
 
-#winner-display div button:active {
+#game-over-display div button:active {
     font-size: 1.4rem;
 }

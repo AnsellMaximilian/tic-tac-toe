@@ -24,8 +24,8 @@ const gameBoard = (function(){
     }
 
     const resetBoard = () => {
-        const winnerDisplay = document.querySelector("#winner-display");
-        winnerDisplay.style.display = "none";
+        const gameOverDisplay = document.querySelector("#game-over-display");
+        gameOverDisplay.style.display = "none";
         gameBoard.innerHTML = "";
         grids = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
         display();
@@ -100,7 +100,19 @@ const game = (function(){
                     displayWinner(combo);
                 }
             }
+
+            if( !gameBoard.getGrids().includes(" ") ) displayDraw();
         });
+    }
+
+    const updateGameOverDisplay = (title, message) => {
+        const gameOverDisplay = document.querySelector("#game-over-display");
+        const gameOverTitle = document.querySelector("#game-over-title");
+        const gameOverMessage = document.querySelector("#game-over-msg");
+
+        gameOverDisplay.style.display = "block";
+        gameOverTitle.textContent = title;
+        gameOverMessage.textContent = message;
     }
 
     const displayWinner = (combo) => {
@@ -109,11 +121,14 @@ const game = (function(){
             grid.style.backgroundColor = "rgb(42, 255, 31)";
         });
 
-        const winnerDisplay = document.querySelector("#winner-display");
-        const winnerMessage = document.querySelector("#winner-msg");
-        winnerDisplay.style.display = "block";
-        winnerMessage.textContent = `Congratulations, ${currentPlayer.getName()}`;
+        updateGameOverDisplay("WINNER", `Congratulations, ${currentPlayer.getName()}`);
 
+    }
+
+    const displayDraw = () => {
+        document.querySelectorAll(".grid").forEach(function(grid){ grid.style.backgroundColor = "red" });
+        
+        updateGameOverDisplay("DRAW", "It's a Draw!");
     }
 
     return {
