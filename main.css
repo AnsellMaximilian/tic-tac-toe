@@ -143,12 +143,13 @@ footer h1 {
     /* For mobile phones: */
     footer {
         display: block;
-       
+        height: 20px;
     }
 
     .player-display {
         box-sizing: border-box;
-        bottom: 50px;
+        bottom: 20px;
+        font-size: 0.75rem;
     }
 
     #player-one-display{
