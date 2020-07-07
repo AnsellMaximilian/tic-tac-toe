@@ -150,6 +150,7 @@ footer h1 {
         box-sizing: border-box;
         bottom: 20px;
         font-size: 0.75rem;
+        max-height: 200px;
     }
 
     #player-one-display{
