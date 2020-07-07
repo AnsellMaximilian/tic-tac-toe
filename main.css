@@ -91,3 +91,35 @@ body {
 #game-over-display div button:active {
     font-size: 1.4rem;
 }
+
+/* PLAYER DISPLAY */
+.player-display {
+    position: absolute;
+    bottom: 43%;
+    width: 30%;
+}
+
+#player-one-display{
+    background-color: white;
+    left: 0;
+}
+
+#player-two-display {
+    background-color: black;
+    color: white;
+    right: 0;
+}
+
+.player-display .player-score{
+    font-size: 1.5rem;
+}
+
+
+    /* PLAYER DISPLAY TITLE */
+.player-display .player-display-title {
+    cursor: pointer;
+}
+
+.player-display .player-display-title:hover {
+    text-decoration: underline;
+}

@@ -44,16 +44,68 @@ const gameBoard = (function(){
 
 // Player object
 const Player = (name, marker) => {
-
+    let score = 0;
     const getName = () => name;
+    const changeName = (newName) => {
+        name = newName || "NOT SET";
+        playerController.updatePlayerDisplayTitle();
+    }
     const getMarker = () => marker;
+    const addScore = () => score++;
+    const returnScore = () => score;
 
     return {
         getName,
-        getMarker
+        changeName,
+        getMarker,
+        addScore,
+        returnScore
     }
 
 }
+
+const playerController = (function(){
+    const playerOneDisplay = document.querySelector("#player-one-display");
+    const playerTwoDisplay = document.querySelector("#player-two-display");
+    const playerOneTitle = document.querySelector("#player-one-display .player-display-title");
+    const playerTwoTitle = document.querySelector("#player-two-display .player-display-title");
+    const playerOneScore = document.querySelector("#player-one-display .player-score");
+    const playerTwoScore = document.querySelector("#player-two-display .player-score");
+
+    const addPlayerDisplayListeners = () => {
+        playerOneTitle.addEventListener("click", (function(){ game.playerOne.changeName(prompt("Choose Name"))}));
+        playerTwoTitle.addEventListener("click", (function(){ game.playerTwo.changeName(prompt("Choose Name"))}));
+    }
+
+    const updatePlayerDisplayTitle = () => {
+        playerOneTitle.textContent = game.playerOne.getName();
+        playerTwoTitle.textContent = game.playerTwo.getName();
+    }
+
+    const updatePlayerDisplayScore = () => {
+        playerOneScore.textContent = game.playerOne.returnScore();
+        playerTwoScore.textContent = game.playerTwo.returnScore();
+    }
+    
+    const highlightCurrentPlayer = (currentPlayer) => {
+        if(currentPlayer.getName() == game.playerOne.getName()) {
+            playerOneDisplay.style.border = "3px yellow solid";
+            playerTwoDisplay.style.border = "none";
+        }else {
+            playerTwoDisplay.style.border = "3px yellow solid";
+            playerOneDisplay.style.border = "none";
+        }
+        console.log(game.currentPlayer.getName())
+    }
+
+    return {
+        addPlayerDisplayListeners,
+        updatePlayerDisplayTitle,
+        updatePlayerDisplayScore,
+        highlightCurrentPlayer
+    }
+
+})();
 
 
 // Game module
@@ -66,9 +118,11 @@ const game = (function(){
     const playerOne = Player("Pinkman", "x");
     const playerTwo = Player("Walter", "o");
 
-    let currentPlayer = playerTwo;
+    let currentPlayer = playerOne;
     
     const startGame = () => {
+        playerController.highlightCurrentPlayer(currentPlayer);
+        playerController.addPlayerDisplayListeners();
         const replayButton = document.querySelector("#replay-button");
         replayButton.addEventListener("click", gameBoard.resetBoard ); 
         gameBoard.display();
@@ -83,8 +137,9 @@ const game = (function(){
             checkWin(grid);
 
             changeCurrentPlayer();
+            playerController.highlightCurrentPlayer(currentPlayer);
         }else {
-            alert(`DUMBASS ${currentPlayer.getMarker()}`);
+            alert(`You can't do that, ${currentPlayer.getName()}...`);
         }
     
     }
@@ -99,6 +154,8 @@ const game = (function(){
         winningCombos.forEach(function(combo, index){
             if(combo.includes(parseInt(grid.dataset.position))){
                 if(grids[combo[0]] == marker && grids[combo[1]] == marker && grids[combo[2]] == marker){
+                    currentPlayer.addScore();
+                    playerController.updatePlayerDisplayScore();
                     displayWinner(combo);
                 }
             }
@@ -138,6 +195,8 @@ const game = (function(){
     return {
         startGame,
         placeMarker,
+        playerOne,
+        playerTwo,
         currentPlayer
     }
 })();
