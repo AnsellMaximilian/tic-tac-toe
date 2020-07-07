@@ -59,7 +59,7 @@ body {
 }
 
 #game-over-display div {
-
+    display: none;
     width: 50%;
     height: 50%;
     background-color: rgba(37, 182, 245, 0.7);

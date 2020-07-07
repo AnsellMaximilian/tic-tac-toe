@@ -25,7 +25,9 @@ const gameBoard = (function(){
 
     const resetBoard = () => {
         const gameOverDisplay = document.querySelector("#game-over-display");
+        const gameOverDisplayDiv = document.querySelector("#game-over-display div")
         gameOverDisplay.style.display = "none";
+        gameOverDisplayDiv.style.display = "none";
         gameBoard.innerHTML = "";
         grids = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
         display();
@@ -107,10 +109,12 @@ const game = (function(){
 
     const updateGameOverDisplay = (title, message) => {
         const gameOverDisplay = document.querySelector("#game-over-display");
+        const gameOverDisplayDiv = document.querySelector("#game-over-display div");
         const gameOverTitle = document.querySelector("#game-over-title");
         const gameOverMessage = document.querySelector("#game-over-msg");
 
         gameOverDisplay.style.display = "block";
+        setTimeout(function(){ gameOverDisplayDiv.style.display = "block" }, 500);
         gameOverTitle.textContent = title;
         gameOverMessage.textContent = message;
     }
