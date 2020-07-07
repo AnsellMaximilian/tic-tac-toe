@@ -160,4 +160,12 @@ footer h1 {
     #player-two-display {
         width: 50%;
     }
+
+    #game-over-display div{
+        z-index: 2;
+    }
+
+    #game-over-display div button {
+        font-size: small;
+    }
 }
