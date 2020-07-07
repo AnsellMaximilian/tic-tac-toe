@@ -130,6 +130,8 @@ footer {
     display: none;
     position: absolute;
     bottom: 0;
+    right: 0;
+    left: 0;
     background-color: rgb(197, 194, 194);
 }
 
@@ -143,4 +145,17 @@ footer h1 {
         display: block;
        
     }
-  }
+
+    .player-display {
+        box-sizing: border-box;
+        bottom: 50px;
+    }
+
+    #player-one-display{
+        width: 50%;
+    }
+    
+    #player-two-display {
+        width: 50%;
+    }
+}
