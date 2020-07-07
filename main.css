@@ -161,7 +161,7 @@ footer h1 {
         width: 50%;
     }
 
-    #game-over-display div{
+    #game-over-display{
         z-index: 2;
     }
 
