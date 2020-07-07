@@ -83,8 +83,8 @@ const playerController = (function(){
     }
 
     const updatePlayerDisplayScore = () => {
-        playerOneScore.textContent = game.playerOne.returnScore();
-        playerTwoScore.textContent = game.playerTwo.returnScore();
+        playerOneScore.textContent = `Score: ${game.playerOne.returnScore()}`;
+        playerTwoScore.textContent = `Score: ${game.playerTwo.returnScore()}`;
     }
     
     const highlightCurrentPlayer = (currentPlayer) => {
