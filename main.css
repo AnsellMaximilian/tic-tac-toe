@@ -166,6 +166,6 @@ footer h1 {
     }
 
     #game-over-display div button {
-        font-size: small;
+        font-size: 20px;
     }
 }
