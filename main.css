@@ -123,3 +123,24 @@ body {
 .player-display .player-display-title:hover {
     text-decoration: underline;
 }
+
+/* FOOTER */
+
+footer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(197, 194, 194);
+}
+
+footer h1 {
+    margin: 20px 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    footer {
+        display: block;
+       
+    }
+  }
